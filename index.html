@@ -1,736 +1,754 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digicides – Kharif Season is Coming</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
+:root {
+  --od: #C94A00; --oc: #E8570A; --ov: #FF6B1A;
+  --ow: #FF8C42; --ol: #FFB380; --op: #FFF0E6;
+  --ou: #FFF8F4; --am: #FFB800; --cr: #FFFAF5;
+  --soil: #3D1F0A; --ts: #5C3D28; --tm: #9C7060; --wh: #FFFFFF;
+}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --orange:#D95F1A;
-  --orange-soft:rgba(217,95,26,0.08);
-  --orange-border:rgba(217,95,26,0.18);
-  --cream:#FAF7F4;
-  --white:#FFFFFF;
-  --navy:#18181B;
-  --navy2:#27272A;
-  --mid:#71717A;
-  --light:#E4E4E7;
-  --light2:#F4F4F5;
-  --green:#2D7A3A;
-  --green-soft:rgba(45,122,58,0.08);
-}
 html{scroll-behavior:smooth}
-body{
-  background:var(--cream);
-  color:var(--navy);
-  font-family:'Inter',sans-serif;
-  font-size:15px;
-  line-height:1.6;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{font-family:'DM Sans',sans-serif;background:var(--cr);color:var(--soil);overflow-x:hidden}
 
 /* ── NAV ── */
 nav{
-  position:sticky;top:0;z-index:100;
+  position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:0 3rem;height:64px;
-  background:rgba(250,247,244,0.94);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid var(--light);
+  padding:16px 48px;
+  background:rgba(255,250,245,0.94);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid rgba(232,87,10,0.1);
+  transition:box-shadow .3s;
 }
-.logo{
-  font-family:'Inter',sans-serif;
-  font-size:0.9rem;font-weight:600;
-  letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--navy);
-}
-.logo span{color:var(--orange)}
-.nav-links{display:flex;align-items:center;gap:2rem}
-.nav-link{
-  font-size:0.8rem;color:var(--mid);font-weight:400;
-  text-decoration:none;transition:color .15s;letter-spacing:0.01em;
-}
-.nav-link:hover{color:var(--navy)}
+.logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;color:var(--oc)}
+.logo span{color:var(--soil)}
 .nav-btn{
-  font-size:0.78rem;font-weight:500;
-  color:var(--white);background:var(--navy);
-  padding:0.5rem 1.25rem;border-radius:6px;
-  border:none;cursor:pointer;transition:all .2s;
-  text-decoration:none;display:inline-block;letter-spacing:0.02em;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--oc);color:var(--wh);border:none;
+  padding:10px 22px;border-radius:100px;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:14px;cursor:pointer;
+  transition:background .2s,transform .15s;
 }
-.nav-btn:hover{background:var(--navy2)}
+.nav-btn:hover{background:var(--od);transform:scale(1.03)}
 
 /* ── HERO ── */
 .hero{
-  max-width:900px;margin:0 auto;
-  padding:7rem 2rem 5rem;
+  min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  padding:130px 48px 90px;position:relative;overflow:hidden;
   text-align:center;
 }
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:7px;
-  font-size:0.72rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--mid);margin-bottom:2.5rem;
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(-45deg,transparent,transparent 60px,rgba(232,87,10,0.025) 60px,rgba(232,87,10,0.025) 62px);
 }
-.eyebrow-line{width:24px;height:1px;background:var(--light)}
-.hero h1{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(3rem,6vw,5.5rem);
-  font-weight:400;line-height:1.08;
-  letter-spacing:-0.02em;
-  color:var(--navy);
-  margin-bottom:1.75rem;
+.hero-orb{
+  position:fixed;right:-180px;top:50%;transform:translateY(-50%);
+  width:680px;height:680px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle at 38% 38%,var(--ov) 0%,var(--ow) 30%,var(--ol) 60%,var(--op) 100%);
+  opacity:0.15;
 }
-.hero h1 em{font-style:italic;color:var(--orange)}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--op);border:1px solid var(--ol);
+  color:var(--od);font-size:11px;font-weight:700;
+  letter-spacing:1.8px;text-transform:uppercase;
+  padding:7px 16px;border-radius:100px;margin-bottom:28px;
+  position:relative;z-index:1;
+}
+.badge-dot{width:8px;height:8px;background:var(--ov);border-radius:50%;animation:blink 2s infinite;flex-shrink:0}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(44px,5.5vw,72px);font-weight:900;line-height:1.06;
+  color:var(--soil);margin-bottom:14px;position:relative;z-index:1;
+}
+h1 .grad{
+  background:linear-gradient(135deg,var(--oc) 0%,var(--am) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
 .hero-sub{
-  font-size:1rem;color:var(--mid);
-  max-width:440px;margin:0 auto 3rem;
-  font-weight:400;line-height:1.8;
+  font-family:'Playfair Display',serif;font-style:italic;
+  font-size:clamp(20px,2.5vw,28px);font-weight:700;
+  color:var(--od);margin-bottom:18px;position:relative;z-index:1;
 }
-.hero-actions{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap}
-.btn-dark{
-  font-size:0.82rem;font-weight:500;
-  color:var(--white);background:var(--navy);
-  padding:0.75rem 1.75rem;border-radius:6px;
-  border:none;cursor:pointer;transition:all .2s;
-  text-decoration:none;display:inline-block;letter-spacing:0.01em;
+.hero-desc{
+  font-size:17px;color:var(--ts);line-height:1.72;
+  max-width:520px;margin:0 auto 42px;position:relative;z-index:1;
 }
-.btn-dark:hover{background:var(--navy2);transform:translateY(-1px)}
-.btn-ghost{
-  font-size:0.82rem;font-weight:400;
-  color:var(--mid);background:transparent;
-  padding:0.75rem 1.75rem;border-radius:6px;
-  border:1px solid var(--light);cursor:pointer;transition:all .2s;
-  text-decoration:none;display:inline-block;letter-spacing:0.01em;
+.hero-cta{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--oc),var(--od));
+  color:var(--wh);font-family:'DM Sans',sans-serif;
+  font-weight:600;font-size:16px;padding:16px 34px;
+  border-radius:100px;border:none;cursor:pointer;text-decoration:none;
+  box-shadow:0 8px 32px rgba(232,87,10,.36);
+  transition:transform .2s,box-shadow .2s;position:relative;z-index:1;
 }
-.btn-ghost:hover{border-color:var(--navy);color:var(--navy)}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 14px 42px rgba(232,87,10,.46)}
+.hero-cta .ico{transition:transform .2s}
+.hero-cta:hover .ico{transform:translateX(4px)}
 
-/* Stats bar */
-.stats-bar{
-  display:flex;justify-content:center;
-  margin-top:4.5rem;
-  border-top:1px solid var(--light);
-  padding-top:3rem;
-  gap:4rem;
+/* ── STRIP ── */
+.strip{
+  background:linear-gradient(135deg,var(--oc),var(--od));
+  padding:20px 48px;display:flex;align-items:center;
+  justify-content:center;gap:32px;flex-wrap:wrap;
 }
-.stat{}
-.stat-n{
-  font-family:'Instrument Serif',serif;
-  font-size:2.4rem;font-weight:400;
-  color:var(--navy);letter-spacing:-0.03em;line-height:1;
+.strip-item{
+  display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,.88);font-size:12px;font-weight:600;
+  letter-spacing:.9px;text-transform:uppercase;white-space:nowrap;
 }
-.stat-n span{color:var(--orange)}
-.stat-l{font-size:0.72rem;color:var(--mid);font-weight:400;margin-top:0.3rem;letter-spacing:0.04em;text-transform:uppercase}
-
-/* ── DIVIDER ── */
-.divider{
-  max-width:900px;margin:0 auto;
-  border:none;border-top:1px solid var(--light);
+.strip-ic{
+  background:rgba(255,255,255,.18);border-radius:6px;
+  padding:5px;display:flex;align-items:center;justify-content:center;
 }
 
-/* ── SECTION ── */
-.section{max-width:1040px;margin:0 auto;padding:6rem 2rem}
-.section-header{margin-bottom:4rem}
-.s-label{
-  font-size:0.7rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--mid);margin-bottom:1rem;
+/* ── SECTION BASE ── */
+.sec{padding:96px 48px}
+.sec-label{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:11px;font-weight:700;letter-spacing:2.5px;
+  text-transform:uppercase;color:var(--oc);margin-bottom:16px;
 }
-.s-title{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:400;letter-spacing:-0.02em;line-height:1.2;
-  color:var(--navy);margin-bottom:0.75rem;
+.sec-label::after{content:'';height:2px;width:38px;background:var(--ol);display:block}
+
+/* ── CHALLENGES (interactive) ── */
+.challenges-sec{background:var(--soil);position:relative;overflow:hidden}
+.challenges-sec::before{
+  content:'';position:absolute;top:-220px;right:-220px;
+  width:620px;height:620px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(232,87,10,.18) 0%,transparent 70%);
 }
-.s-title em{font-style:italic;color:var(--orange)}
-.s-sub{
-  font-size:0.9rem;color:var(--mid);
-  max-width:480px;font-weight:400;line-height:1.8;
+.challenges-sec .sec-label{color:var(--ow)}
+.challenges-sec .sec-label::after{background:rgba(255,140,66,.35)}
+
+.challenges-sec h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(30px,4vw,50px);font-weight:900;
+  color:var(--wh);margin-bottom:14px;line-height:1.14;
+}
+.challenges-sec h2 em{color:var(--ow);font-style:italic}
+
+.challenge-hint{
+  font-size:13px;color:rgba(255,255,255,.45);margin-bottom:44px;
+  display:flex;align-items:center;gap:8px;
 }
 
-/* ── BENTO ── */
-.bento{
+.challenges-grid{
   display:grid;
-  grid-template-columns:repeat(12,1fr);
-  gap:1px;
-  background:var(--light);
-  border:1px solid var(--light);
-  border-radius:16px;
-  overflow:hidden;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
 }
-.bc{
-  background:var(--white);
-  padding:2.25rem 2rem;
-  position:relative;
+
+/* THE CARD */
+.ch-card{
+  display:flex;flex-direction:column;gap:18px;
+  background:rgba(255,255,255,.05);
+  border:1.5px solid rgba(255,140,66,.12);
+  border-radius:20px;padding:24px 24px 22px;
+  cursor:pointer;
+  transition:background .22s,border-color .22s,transform .22s,box-shadow .22s;
+  position:relative;user-select:none;
+  min-height:130px;justify-content:space-between;
+}
+.ch-card:hover{
+  background:rgba(232,87,10,.09);
+  border-color:rgba(232,87,10,.32);
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(0,0,0,.18);
+}
+.ch-card.selected{
+  background:rgba(232,87,10,.16);
+  border-color:var(--ow);
+  box-shadow:0 0 0 1px rgba(255,140,66,.45),0 10px 32px rgba(232,87,10,.25);
+  transform:translateY(-3px);
+}
+
+/* Top row: icon pill left + check right */
+.ch-top{
+  display:flex;align-items:center;justify-content:space-between;
+}
+
+/* Icon pill */
+.ch-icon-pill{
+  width:36px;height:36px;
+  background:rgba(255,255,255,.08);border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
   transition:background .2s;
+  flex-shrink:0;
 }
-.bc:hover{background:#FDFCFB}
-
-.bc-7{grid-column:span 7}
-.bc-5{grid-column:span 5}
-.bc-4{grid-column:span 4}
-.bc-8{grid-column:span 8}
-.bc-6{grid-column:span 6}
-
-/* Card inner */
-.bc-num{
-  font-family:'Instrument Serif',serif;
-  font-size:0.75rem;font-weight:400;
-  color:var(--mid);letter-spacing:0.06em;
-  margin-bottom:1.5rem;
-  display:block;
-}
-.bc-title{
-  font-family:'Instrument Serif',serif;
-  font-size:1.25rem;font-weight:400;
-  color:var(--navy);line-height:1.3;
-  margin-bottom:0.6rem;letter-spacing:-0.01em;
-}
-.bc-body{
-  font-size:0.82rem;color:var(--mid);
-  line-height:1.75;font-weight:400;
-}
-.bc-tag{
-  display:inline-block;
-  font-size:0.63rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;
-  padding:0.2rem 0.65rem;border-radius:4px;
-  margin-bottom:1.1rem;
-}
-.tag-o{background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-border)}
-.tag-g{background:var(--green-soft);color:var(--green);border:1px solid rgba(45,122,58,0.2)}
-.tag-n{background:var(--light2);color:var(--mid);border:1px solid var(--light)}
-
-/* Bar charts */
-.bars{margin-top:1.75rem;display:flex;flex-direction:column;gap:1rem}
-.bar-row{}
-.bar-meta{display:flex;justify-content:space-between;margin-bottom:5px}
-.bar-name{font-size:0.72rem;color:var(--mid);font-weight:400}
-.bar-val{font-size:0.72rem;font-weight:500;color:var(--navy)}
-.bar-track{height:3px;background:var(--light2);border-radius:100px;overflow:hidden}
-.bar-fill{height:100%;border-radius:100px;background:var(--navy)}
-.bar-fill.o{background:var(--orange)}
-.bar-fill.g{background:var(--green)}
-.bar-fill.l{background:var(--light)}
-
-/* Big number */
-.big-n{
-  font-family:'Instrument Serif',serif;
-  font-size:4.5rem;font-weight:400;
-  color:var(--navy);letter-spacing:-0.05em;line-height:1;
-  margin-top:auto;
-}
-.big-n em{color:var(--orange);font-style:normal}
-.big-n-sub{font-size:0.78rem;color:var(--mid);font-weight:400;margin-top:0.5rem;line-height:1.5}
-
-/* Funnel */
-.funnel{margin-top:1.75rem;display:flex;flex-direction:column;gap:7px}
-.f-bar{
-  height:36px;border-radius:6px;
-  display:flex;align-items:center;padding:0 1rem;
-  font-size:0.73rem;font-weight:500;
-  letter-spacing:0.01em;
-}
-.f-a{width:100%;background:var(--light2);color:var(--navy)}
-.f-b{width:62%;background:rgba(217,95,26,0.06);color:var(--orange)}
-.f-c{width:30%;background:rgba(217,95,26,0.12);color:var(--orange)}
-.funnel-note{
-  display:flex;justify-content:space-between;
-  margin-top:0.5rem;
-}
-.fn{font-size:0.67rem;color:var(--mid)}
-
-/* Season pills */
-.s-pills{display:flex;gap:5px;margin-top:1.75rem;flex-wrap:wrap}
-.sp{
-  padding:0.35rem 0.6rem;border-radius:5px;
-  font-size:0.67rem;font-weight:500;letter-spacing:0.04em;text-align:center;
-  flex:1;
-}
-.sp-off{background:var(--light2);color:var(--mid)}
-.sp-on{background:var(--orange-soft);color:var(--orange);border:1px solid var(--orange-border)}
-.sp-peak{background:var(--orange);color:#fff;font-weight:600}
-
-/* Channel rows */
-.ch-list{margin-top:1.75rem;display:flex;flex-direction:column;gap:8px}
-.ch-item{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0.65rem 0;
-  border-bottom:1px solid var(--light2);
-}
-.ch-item:last-child{border-bottom:none}
-.ch-l{display:flex;align-items:center;gap:10px}
-.ch-dot{width:6px;height:6px;border-radius:50%}
-.ch-name{font-size:0.8rem;color:var(--navy);font-weight:400}
-.ch-val{font-size:0.78rem;font-weight:500;color:var(--green)}
-
-/* ── ABOUT ── */
-.about-grid{display:grid;grid-template-columns:5fr 7fr;gap:5rem;align-items:start}
-.about-left .s-sub{max-width:100%;margin-bottom:2.5rem}
-.feat-list{display:flex;flex-direction:column}
-.feat-item{
-  padding:1.25rem 0;
-  border-top:1px solid var(--light);
-  display:flex;gap:1.25rem;align-items:flex-start;
-}
-.feat-item:last-child{border-bottom:1px solid var(--light)}
-.feat-num{
-  font-family:'Instrument Serif',serif;
-  font-size:0.8rem;color:var(--mid);
-  min-width:20px;margin-top:2px;
-}
-.feat-body h4{
-  font-size:0.85rem;font-weight:500;color:var(--navy);
-  margin-bottom:0.25rem;letter-spacing:0.01em;
-}
-.feat-body p{font-size:0.8rem;color:var(--mid);line-height:1.7}
-
-/* Dashboard panel */
-.db-panel{
-  background:var(--white);border:1px solid var(--light);
-  border-radius:14px;overflow:hidden;
-}
-.db-header{
-  padding:1.25rem 1.5rem;border-bottom:1px solid var(--light);
-  display:flex;align-items:center;justify-content:space-between;
-}
-.db-h-title{font-size:0.75rem;font-weight:500;color:var(--navy);letter-spacing:0.04em;text-transform:uppercase}
-.db-live{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--green);font-weight:500}
-.db-dot{width:5px;height:5px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.db-rows{padding:0 1.5rem}
-.db-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:1.1rem 0;border-bottom:1px solid var(--light2);
-  gap:1rem;
-}
-.db-row:last-child{border-bottom:none}
-.db-row-label{font-size:0.8rem;color:var(--mid);font-weight:400;flex:1}
-.db-row-bar{flex:2;height:3px;background:var(--light2);border-radius:100px;overflow:hidden}
-.db-row-fill{height:100%;border-radius:100px}
-.dbf-o{background:var(--orange)}
-.dbf-g{background:var(--green)}
-.dbf-n{background:var(--navy)}
-.db-row-val{font-size:0.82rem;font-weight:500;color:var(--navy);min-width:36px;text-align:right}
-.db-footer{
-  padding:1.25rem 1.5rem;
-  border-top:1px solid var(--light);
-  background:var(--light2);
-}
-.db-footer-label{font-size:0.68rem;color:var(--mid);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:0.6rem}
-.brand-tags{display:flex;flex-wrap:wrap;gap:5px}
-.brand-tag{
-  font-size:0.68rem;font-weight:500;color:var(--mid);
-  padding:0.2rem 0.65rem;border-radius:4px;
-  background:var(--white);border:1px solid var(--light);
+.ch-card.selected .ch-icon-pill{
+  background:rgba(232,87,10,.35);
 }
 
-/* ── CTA ── */
-.cta-outer{
-  max-width:1040px;margin:0 auto;
-  padding:0 2rem 6rem;
+/* Animated checkbox */
+.ch-check{
+  width:24px;height:24px;min-width:24px;
+  border-radius:7px;
+  border:2px solid rgba(255,140,66,.28);
+  background:rgba(255,255,255,.06);
+  display:flex;align-items:center;justify-content:center;
+  transition:background .2s,border-color .2s,transform .15s;
+  flex-shrink:0;
 }
-.cta-box{
-  background:var(--navy);
-  border-radius:16px;
-  overflow:hidden;
-  display:grid;grid-template-columns:1fr 1fr;
+.ch-card.selected .ch-check{
+  background:linear-gradient(135deg,var(--ov),var(--am));
+  border-color:transparent;
+  transform:scale(1.1);
 }
-.cta-left{
-  padding:3.5rem;
-  border-right:1px solid rgba(255,255,255,0.07);
+.ch-check svg{opacity:0;transform:scale(.4);transition:opacity .15s,transform .2s}
+.ch-card.selected .ch-check svg{opacity:1;transform:scale(1)}
+
+.ch-text{
+  font-size:14px;color:rgba(255,255,255,.78);
+  line-height:1.55;font-weight:400;
 }
-.cta-eyebrow{
-  font-size:0.68rem;font-weight:500;letter-spacing:0.1em;text-transform:uppercase;
-  color:rgba(255,255,255,0.35);margin-bottom:2rem;
+.ch-card.selected .ch-text{color:rgba(255,255,255,.97)}
+
+/* Selected counter */
+.sel-counter{
+  margin-top:32px;
+  display:flex;align-items:center;gap:12px;
+  font-size:13px;color:rgba(255,255,255,.45);
+  transition:color .3s;
+}
+.sel-counter.active{color:var(--ow)}
+.sel-pill{
+  background:linear-gradient(135deg,var(--ov),var(--am));
+  color:var(--wh);font-size:12px;font-weight:700;
+  padding:3px 11px;border-radius:100px;
+  transition:opacity .2s;
+}
+
+/* ── CTA / FORM ── */
+.cta-sec{background:var(--ou);position:relative;overflow:hidden}
+.cta-sec::after{
+  content:'';position:absolute;bottom:-120px;left:-120px;
+  width:420px;height:420px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(232,87,10,.1) 0%,transparent 70%);
+}
+.cta-wrap{
+  display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start;
 }
 .cta-left h2{
-  font-family:'Instrument Serif',serif;
-  font-size:clamp(1.8rem,3vw,2.6rem);font-weight:400;
-  line-height:1.2;letter-spacing:-0.02em;
-  color:var(--white);margin-bottom:1rem;
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.5vw,44px);font-weight:900;
+  color:var(--soil);line-height:1.14;margin-bottom:14px;
 }
-.cta-left h2 em{font-style:italic;color:var(--orange)}
-.cta-left p{
-  font-size:0.85rem;color:rgba(255,255,255,0.45);
-  font-weight:400;line-height:1.8;margin-bottom:2.5rem;
+.cta-left h2 em{color:var(--oc);font-style:italic}
+.cta-left p{font-size:17px;color:var(--ts);line-height:1.7;margin-bottom:28px}
+.noob{
+  display:flex;align-items:center;gap:9px;
+  font-size:13px;color:var(--tm);font-weight:500;
 }
-.trust-nums{display:flex;gap:2.5rem}
-.tn-val{
-  font-family:'Instrument Serif',serif;
-  font-size:2rem;font-weight:400;
-  color:var(--white);letter-spacing:-0.03em;line-height:1;
-}
-.tn-val em{color:var(--orange);font-style:normal}
-.tn-label{font-size:0.67rem;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.07em;margin-top:0.3rem}
 
-/* Form */
-.form-side{padding:3.5rem;background:var(--white)}
-.form-title{
-  font-family:'Instrument Serif',serif;
-  font-size:1.4rem;font-weight:400;color:var(--navy);
-  margin-bottom:0.3rem;letter-spacing:-0.01em;
+/* form card */
+.form-card{
+  background:var(--wh);border-radius:24px;padding:36px 40px;
+  box-shadow:0 18px 56px rgba(60,20,0,.1);
+  border:1px solid rgba(232,87,10,.1);position:relative;z-index:2;
 }
-.form-sub-text{font-size:0.78rem;color:var(--mid);margin-bottom:2rem}
-.f-field{margin-bottom:0.75rem}
-.f-field input{
-  width:100%;
-  background:var(--light2);
-  border:1px solid var(--light);
-  border-radius:7px;
-  padding:0.7rem 1rem;
-  color:var(--navy);
-  font-family:'Inter',sans-serif;
-  font-size:0.83rem;
-  font-weight:400;
-  transition:border-color .15s,background .15s;
+.form-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--oc),var(--am));border-radius:24px 24px 0 0;
 }
-.f-field input::placeholder{color:var(--mid);opacity:0.7}
-.f-field input:focus{
-  outline:none;
-  border-color:var(--navy);
-  background:var(--white);
+.form-head{
+  display:flex;align-items:center;gap:12px;
+  font-family:'Playfair Display',serif;font-size:21px;font-weight:700;
+  color:var(--soil);margin-bottom:26px;
 }
-.f-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.75rem}
-.f-row input{
-  width:100%;
-  background:var(--light2);border:1px solid var(--light);
-  border-radius:7px;padding:0.7rem 1rem;
-  color:var(--navy);font-family:'Inter',sans-serif;
-  font-size:0.83rem;transition:border-color .15s,background .15s;
+.form-head-ic{
+  width:40px;height:40px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--oc),var(--od));
+  border-radius:10px;display:flex;align-items:center;justify-content:center;
 }
-.f-row input::placeholder{color:var(--mid);opacity:0.7}
-.f-row input:focus{outline:none;border-color:var(--navy);background:var(--white)}
-.f-submit{
-  width:100%;
-  background:var(--orange);color:var(--white);
-  font-family:'Inter',sans-serif;
-  font-size:0.85rem;font-weight:500;
-  padding:0.8rem 1.5rem;border-radius:7px;
-  border:none;cursor:pointer;transition:all .2s;
-  margin-top:0.25rem;letter-spacing:0.01em;
+
+/* 2-col row */
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-g{margin-bottom:16px}
+.form-g label{
+  display:flex;align-items:center;gap:6px;
+  font-size:11px;font-weight:700;color:var(--ts);
+  letter-spacing:.9px;text-transform:uppercase;margin-bottom:7px;
 }
-.f-submit:hover{background:#c45516;transform:translateY(-1px)}
-.f-note{font-size:0.68rem;color:var(--mid);text-align:center;margin-top:0.75rem}
+.form-g input{
+  width:100%;padding:13px 16px;
+  border:1.5px solid rgba(92,62,40,.14);border-radius:11px;
+  font-family:'DM Sans',sans-serif;font-size:15px;color:var(--soil);
+  background:var(--cr);outline:none;
+  transition:border-color .2s,box-shadow .2s;
+}
+.form-g input::placeholder{color:var(--tm)}
+.form-g input:focus{border-color:var(--oc);box-shadow:0 0 0 3px rgba(232,87,10,.1)}
+
+.form-submit{
+  width:100%;padding:15px;margin-top:6px;
+  background:linear-gradient(135deg,var(--oc),var(--od));
+  color:var(--wh);font-family:'DM Sans',sans-serif;
+  font-weight:700;font-size:16px;border:none;border-radius:12px;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:9px;
+  box-shadow:0 6px 24px rgba(232,87,10,.34);
+  transition:transform .2s,box-shadow .2s;
+}
+.form-submit:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(232,87,10,.44)}
+
+/* ── ABOUT ── */
+.about-sec{background:var(--cr);padding:96px 48px}
+.about-in{max-width:860px;margin:0 auto;text-align:center}
+.about-in h2{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(28px,3.5vw,44px);font-weight:900;
+  color:var(--soil);margin-bottom:18px;line-height:1.14;
+}
+.about-in h2 span{color:var(--oc)}
+.about-in p{
+  font-size:18px;color:var(--ts);line-height:1.8;
+  max-width:660px;margin:0 auto 48px;
+}
+.tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.tag{
+  display:inline-flex;align-items:center;gap:9px;
+  background:var(--op);border:1px solid var(--ol);
+  color:var(--od);font-size:13px;font-weight:600;
+  padding:10px 20px;border-radius:100px;
+  transition:background .2s,transform .15s;cursor:default;
+}
+.tag:hover{background:var(--ol);transform:translateY(-2px)}
+.tag-ic{
+  width:22px;height:22px;background:var(--oc);border-radius:6px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
 
 /* ── FOOTER ── */
 footer{
-  border-top:1px solid var(--light);
-  padding:1.75rem 3rem;
-  display:flex;align-items:center;justify-content:space-between;
-  background:var(--cream);
+  background:var(--soil);padding:30px 48px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
 }
-.f-logo{font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy)}
-.f-logo span{color:var(--orange)}
-.f-copy{font-size:0.72rem;color:var(--mid)}
-.f-tagline{font-size:0.72rem;color:var(--mid);letter-spacing:0.04em}
+.f-logo{font-family:'Playfair Display',serif;font-size:20px;font-weight:900;color:var(--ow)}
+.f-txt{font-size:13px;color:rgba(255,255,255,.35)}
 
-/* Reveal */
-@keyframes up{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0}
+/* ── ANIMS ── */
 
-@media(max-width:820px){
-  nav{padding:0 1.25rem}
-  .hero{padding:5rem 1.25rem 4rem}
-  .stats-bar{gap:2rem}
-  .section{padding:4rem 1.25rem}
-  .bento{grid-template-columns:1fr 1fr;gap:1px}
-  .bc-7,.bc-5,.bc-4,.bc-8,.bc-6{grid-column:span 2}
-  .about-grid{grid-template-columns:1fr}
-  .cta-box{grid-template-columns:1fr}
-  .cta-left{border-right:none;border-bottom:1px solid rgba(255,255,255,0.07);padding:2.5rem 1.75rem}
-  .form-side{padding:2.5rem 1.75rem}
-  .trust-nums{gap:1.5rem}
-  footer{flex-direction:column;gap:0.5rem;text-align:center;padding:1.5rem}
+/* Keyframes */
+@keyframes fadeUp{from{opacity:0;transform:translateY(32px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideDown{from{opacity:0;transform:translateY(-18px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.78)}}
+@keyframes orbFloat{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-53%) scale(1.04)}}
+@keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes cardPop{0%{opacity:0;transform:translateY(20px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes checkBounce{0%{transform:scale(.3)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
+@keyframes counterSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-2px,2px)}40%{transform:translate(2px,-1px)}60%{transform:translate(-1px,3px)}80%{transform:translate(3px,-2px)}}
+@keyframes inputGlow{0%{box-shadow:0 0 0 0 rgba(232,87,10,.2)}50%{box-shadow:0 0 0 5px rgba(232,87,10,.08)}100%{box-shadow:0 0 0 3px rgba(232,87,10,.12)}}
+@keyframes tagFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes borderPulse{0%,100%{border-color:rgba(255,140,66,.12)}50%{border-color:rgba(255,140,66,.3)}}
+
+/* Nav */
+nav{animation:slideDown .6s cubic-bezier(.22,1,.36,1) both}
+
+/* Orb float */
+.hero-orb{animation:orbFloat 7s ease-in-out infinite}
+
+/* Hero staggered entrance */
+.hero-badge{animation:fadeUp .7s .1s ease both}
+h1{animation:fadeUp .7s .22s ease both}
+.hero-sub{animation:fadeUp .7s .34s ease both}
+.hero-desc{animation:fadeUp .7s .46s ease both}
+.hero-cta{animation:fadeUp .7s .58s ease both}
+
+/* Heading gradient shimmer */
+h1 .grad{
+  background-size:300% auto;
+  animation:shimmer 4s linear infinite;
+}
+
+/* Strip ticker — infinite scroll */
+.strip-track{
+  display:flex;gap:32px;align-items:center;
+  animation:tickerScroll 18s linear infinite;
+  width:max-content;
+}
+.strip-track:hover{animation-play-state:paused}
+
+/* Reveal sections */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease,transform .75s ease}
+.reveal.vis{opacity:1;transform:none}
+
+/* Challenge cards stagger */
+.ch-card{animation:none}
+.challenges-sec.vis .ch-card:nth-child(1){animation:cardPop .55s .05s ease both}
+.challenges-sec.vis .ch-card:nth-child(2){animation:cardPop .55s .12s ease both}
+.challenges-sec.vis .ch-card:nth-child(3){animation:cardPop .55s .19s ease both}
+.challenges-sec.vis .ch-card:nth-child(4){animation:cardPop .55s .26s ease both}
+.challenges-sec.vis .ch-card:nth-child(5){animation:cardPop .55s .33s ease both}
+.challenges-sec.vis .ch-card:nth-child(6){animation:cardPop .55s .40s ease both}
+.challenges-sec.vis .ch-card:nth-child(7){animation:cardPop .55s .47s ease both}
+
+/* Unselected cards breathe subtly */
+.ch-card:not(.selected){animation:borderPulse 3.5s ease-in-out infinite}
+
+/* Checkmark bounce on select */
+.ch-card.selected .ch-check svg{animation:checkBounce .3s ease both}
+
+/* Counter animate in */
+.sel-counter.active{animation:counterSlide .3s ease both}
+
+/* Grain noise overlay on dark section */
+.challenges-sec::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  background-size:200px;
+  opacity:.35;
+  animation:grain 1.2s steps(1) infinite;
+}
+.challenges-sec>*{position:relative;z-index:1}
+
+/* Form card entrance */
+.cta-sec.vis .form-card{animation:fadeUp .7s .2s ease both}
+.cta-sec.vis .cta-left{animation:fadeUp .7s .05s ease both}
+
+/* Input focus glow */
+.form-g input:focus{animation:inputGlow .4s ease forwards}
+
+/* About tags stagger float */
+.about-sec.vis .tag:nth-child(1){animation:tagFloat 3s .0s ease-in-out infinite}
+.about-sec.vis .tag:nth-child(2){animation:tagFloat 3s .4s ease-in-out infinite}
+.about-sec.vis .tag:nth-child(3){animation:tagFloat 3s .8s ease-in-out infinite}
+.about-sec.vis .tag:nth-child(4){animation:tagFloat 3s 1.2s ease-in-out infinite}
+.about-sec.vis .tag:nth-child(5){animation:tagFloat 3s 1.6s ease-in-out infinite}
+.about-sec.vis .tag:nth-child(6){animation:tagFloat 3s 2.0s ease-in-out infinite}
+
+/* Submit button pulse */
+.form-submit{position:relative;overflow:hidden}
+.form-submit::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.15) 50%,transparent 100%);
+  transform:translateX(-100%);transition:transform .5s ease;
+}
+.form-submit:hover::after{transform:translateX(100%)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:860px){
+  nav,footer{padding:16px 22px}
+  .hero,.sec,.about-sec{padding:90px 22px 60px}
+  .cta-wrap{grid-template-columns:1fr;gap:36px}
+  .form-row{grid-template-columns:1fr}
+  .strip{padding:18px 22px;gap:18px}
+  .challenges-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .challenges-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
-<nav>
-  <span class="logo">Digi<span>cides</span></span>
-  <div class="nav-links">
-    <a href="#problems" class="nav-link">Challenges</a>
-    <a href="#about" class="nav-link">About</a>
-    <a href="#book" class="nav-btn">Book Free Call</a>
-  </div>
+<nav id="nav">
+  <div class="logo">Digi<span>cides</span></div>
+  <button class="nav-btn" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
+    <!-- phone-call -->
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 7.95 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
+    Book Free Call
+  </button>
 </nav>
 
 <!-- HERO -->
-<div class="hero reveal">
-  <div class="hero-eyebrow">
-    <span class="eyebrow-line"></span>
-    Kharif Season 2025
-    <span class="eyebrow-line"></span>
+<section class="hero">
+  <div class="hero-orb"></div>
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-dot"></span>Kharif Season 2025</div>
+    <h1><span class="grad">Kharif Season</span><br>is Coming.</h1>
+    <p class="hero-sub">Is Your Agri Brand Ready?</p>
+    <p class="hero-desc">Plan your marketing, reach the right farmers, and drive better sales this season.</p>
+    <a href="#cta" class="hero-cta">
+      Book Free Strategy Call
+      <span class="ico">
+        <!-- arrow-right -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span>
+    </a>
   </div>
-  <h1>Is Your Agri Brand<br/><em>Ready</em> for Kharif?</h1>
-  <p class="hero-sub">Reach the right farmers, prepare your marketing, and drive better sales — before the season begins.</p>
-  <div class="hero-actions">
-    <a href="#book" class="btn-dark">Book Free Strategy Call</a>
-    <a href="#problems" class="btn-ghost">See What's Holding You Back</a>
-  </div>
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-n">1.2<span>M+</span></div>
-      <div class="stat-l">Farmer Leads</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">12<span>+</span></div>
-      <div class="stat-l">Omni-Channels</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">60<span>%</span></div>
-      <div class="stat-l">Lead Conversion</div>
-    </div>
-    <div class="stat">
-      <div class="stat-n">50<span>+</span></div>
-      <div class="stat-l">Agri Brands</div>
-    </div>
-  </div>
-</div>
+</section>
 
-<!-- BENTO PROBLEMS -->
-<div class="section" id="problems">
-  <div class="section-header">
-    <div class="s-label">Why Agri Brands Struggle</div>
-    <h2 class="s-title">Sound <em>familiar?</em></h2>
-    <p class="s-sub">These are the exact challenges we've diagnosed across 50+ agri brands — and built a system to fix.</p>
-  </div>
-
-  <div class="bento">
-
-    <!-- 1: Low Repeat Sales -->
-    <div class="bc bc-7">
-      <span class="bc-num">01</span>
-      <div class="bc-tag tag-o">Sales</div>
-      <div class="bc-title">Low & Zero Repeat Sales</div>
-      <div class="bc-body">Farmers buy once and disappear. Without a loyalty loop, next season they go to a competitor.</div>
-      <div class="bars">
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Your likely repeat rate</span><span class="bar-val" style="color:var(--orange)">18%</span></div>
-          <div class="bar-track"><div class="bar-fill o" style="width:18%"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Industry benchmark</span><span class="bar-val" style="color:var(--green)">55%</span></div>
-          <div class="bar-track"><div class="bar-fill g" style="width:55%"></div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-meta"><span class="bar-name">Digicides client avg.</span><span class="bar-val">71%</span></div>
-          <div class="bar-track"><div class="bar-fill" style="width:71%"></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2: Engagement stat -->
-    <div class="bc bc-5" style="display:flex;flex-direction:column;">
-      <span class="bc-num">02</span>
-      <div class="bc-tag tag-g">Engagement</div>
-      <div class="bc-title">Farmers Not Responding?</div>
-      <div class="bc-body">Single-channel outreach loses attention fast. Brands using omni-channel see dramatically higher stickiness.</div>
-      <div style="margin-top:auto;padding-top:2rem;">
-        <div class="big-n">3<em>×</em></div>
-        <div class="big-n-sub">more engagement, omni-channel<br/>vs. single-channel outreach</div>
-      </div>
-    </div>
-
-    <!-- 3: Wrong audience -->
-    <div class="bc bc-8">
-      <span class="bc-num">03</span>
-      <div class="bc-tag tag-o">Targeting</div>
-      <div class="bc-title">Reaching the Wrong Farmers</div>
-      <div class="bc-body">Without geo-targeted, crop-specific data, your budget spreads thin. Intent-rich farmers never see your brand.</div>
-      <div class="funnel">
-        <div class="f-bar f-a">Total campaign reach — 100%</div>
-        <div class="f-bar f-b">Relevant farmers — 62%</div>
-        <div class="f-bar f-c">Actual buyers — 28%</div>
-      </div>
-      <div class="funnel-note">
-        <span class="fn">Full budget spent</span>
-        <span class="fn">Only 62% relevant</span>
-        <span class="fn">28% convert</span>
-      </div>
-    </div>
-
-    <!-- 4: No strategy -->
-    <div class="bc bc-4">
-      <span class="bc-num">04</span>
-      <div class="bc-tag tag-n">Strategy</div>
-      <div class="bc-title">No Digital Roadmap</div>
-      <div class="bc-body">Running campaigns without a connected strategy is like sowing seeds in concrete. Activity isn't results.</div>
-    </div>
-
-    <!-- 5: ROI unknown -->
-    <div class="bc bc-4">
-      <span class="bc-num">05</span>
-      <div class="bc-tag tag-n">ROI</div>
-      <div class="bc-title">Spend In. Results Unknown.</div>
-      <div class="bc-body">WhatsApp, SMS, OBD — budget out the door with no transparent dashboard to show what's working.</div>
-    </div>
-
-    <!-- 6: Seasonal -->
-    <div class="bc bc-4">
-      <span class="bc-num">06</span>
-      <div class="bc-tag tag-o">Revenue Risk</div>
-      <div class="bc-title">100% Seasonal Dependency</div>
-      <div class="bc-body">Feast in Kharif, famine the rest of the year. No loyalty program means revenue held hostage by monsoon.</div>
-    </div>
-
-    <!-- 7: No lead system -->
-    <div class="bc bc-8">
-      <span class="bc-num">07</span>
-      <div class="bc-tag tag-o">Lead Generation</div>
-      <div class="bc-title">No Always-On Farmer Lead Pipeline</div>
-      <div class="bc-body">Trade shows and referrals bring sporadic leads. You're missing the intent window — the exact weeks farmers are deciding on inputs.</div>
-      <div class="s-pills">
-        <div class="sp sp-off">Jan</div>
-        <div class="sp sp-off">Feb</div>
-        <div class="sp sp-off">Mar</div>
-        <div class="sp sp-on">Apr</div>
-        <div class="sp sp-peak">May</div>
-        <div class="sp sp-peak">Jun</div>
-        <div class="sp sp-on">Jul</div>
-        <div class="sp sp-off">Aug</div>
-        <div class="sp sp-off">Sep</div>
-      </div>
-      <div style="font-size:0.68rem;color:var(--mid);margin-top:0.6rem;">↑ Kharif intent window — most brands go dark precisely when farmers are deciding</div>
-    </div>
-
+<!-- STRIP -->
+<div class="strip" style="overflow:hidden;padding:0">
+  <div class="strip-track" style="padding:20px 0">
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>Digital Marketing</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Farmer Lead Generation</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>Loyalty Programs</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>Campaign Strategy</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>Agri Ecosystem Experts</span>
+    <!-- duplicate for seamless loop -->
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>Digital Marketing</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>Farmer Lead Generation</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>Loyalty Programs</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></span>Campaign Strategy</span>
+    <span class="strip-item"><span class="strip-ic"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>Agri Ecosystem Experts</span>
   </div>
 </div>
+
+<!-- CHALLENGES — interactive multi-select -->
+<section class="challenges-sec sec reveal" id="challenges">
+  <div class="sec-label">Challenges We Solve</div>
+  <h2>Are You Facing<br><em>These Challenges?</em></h2>
+  <p class="challenge-hint">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    Select all that apply — tap to choose
+  </p>
+
+  <div class="challenges-grid" id="challengeGrid">
+
+    <div class="ch-card" data-id="0" onclick="toggleCard(this)">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">Low product sales or repeat sales issues</p>
+    </div>
+
+    <div class="ch-card" data-id="1" onclick="toggleCard(this)">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">Not reaching the right farmer audience</p>
+    </div>
+
+    <div class="ch-card" data-id="2" onclick="toggleCard(this)">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">Confused about digital marketing strategy</p>
+    </div>
+
+    <div class="ch-card" data-id="3" onclick="toggleCard(this)">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">Running campaigns but not seeing results? Experiencing low ROI?</p>
+    </div>
+
+    <div class="ch-card" data-id="4" onclick="toggleCard(this)">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="18" y1="8" x2="23" y2="13"/><line x1="23" y1="8" x2="18" y2="13"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">Struggling to engage farmers consistently</p>
+    </div>
+
+    <div class="ch-card" data-id="5" onclick="toggleCard(this)">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">No proper system for farmer lead generation</p>
+    </div>
+
+    <div class="ch-card" data-id="6" onclick="toggleCard(this)" style="grid-column:1/-1;">
+      <div class="ch-top">
+        <div class="ch-icon-pill">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,140,66,.85)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="16" x2="9.01" y2="16" stroke-width="3"/></svg>
+        </div>
+        <div class="ch-check">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+      </div>
+      <p class="ch-text">Seasonal sales dependency with no long-term plan</p>
+    </div>
+
+  </div>
+
+  <div class="sel-counter" id="selCounter">
+    <span>0 challenges selected</span>
+  </div>
+</section>
+
+<!-- CTA / FORM -->
+<section class="cta-sec sec reveal" id="cta">
+  <div class="cta-wrap">
+    <div class="cta-left">
+      <div class="sec-label">Free Strategy Call</div>
+      <h2>Let's Fix This<br><em>Before Kharif Starts</em></h2>
+      <p>Book a free strategy call and plan your growth.</p>
+      <div class="noob">
+        <!-- shield-check -->
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9C7060" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        No obligation. Just a clear strategy for your brand.
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-head">
+        <div class="form-head-ic">
+          <!-- phone-call -->
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 7.95 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
+        </div>
+        Book Free Strategy Call
+      </div>
+
+      <!-- ROW 1: Name | Company -->
+      <div class="form-row">
+        <div class="form-g">
+          <label>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Name
+          </label>
+          <input type="text" placeholder="Your full name">
+        </div>
+        <div class="form-g">
+          <label>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Company Name
+          </label>
+          <input type="text" placeholder="Your agri brand">
+        </div>
+      </div>
+
+      <!-- ROW 2: Email | Contact -->
+      <div class="form-row">
+        <div class="form-g">
+          <label>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            Email
+          </label>
+          <input type="email" placeholder="you@company.com">
+        </div>
+        <div class="form-g">
+          <label>
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
+            Contact Number
+          </label>
+          <input type="tel" placeholder="+91 00000 00000">
+        </div>
+      </div>
+
+      <button class="form-submit">
+        Book My Free Strategy Call
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
 
 <!-- ABOUT -->
-<div class="section" id="about" style="padding-top:2rem;">
-  <div class="about-grid">
-    <div class="about-left">
-      <div class="s-label">About Digicides</div>
-      <h2 class="s-title">Built for <em>agri.</em><br/>End to end.</h2>
-      <p class="s-sub">India's dedicated agri-marketing SaaS platform — helping brands generate farmer leads, run targeted campaigns, and build repeat purchase loyalty.</p>
-      <div class="feat-list">
-        <div class="feat-item">
-          <span class="feat-num">01</span>
-          <div class="feat-body">
-            <h4>Farmer Lead Generation at Scale</h4>
-            <p>Missed call, WhatsApp, IVR, App — all channels funneling real farmer intent into your CRM, 24/7.</p>
-          </div>
-        </div>
-        <div class="feat-item">
-          <span class="feat-num">02</span>
-          <div class="feat-body">
-            <h4>Loyalty & Repeat Purchase Engine</h4>
-            <p>RuralReward turns one-time buyers into season-after-season brand loyalists.</p>
-          </div>
-        </div>
-        <div class="feat-item">
-          <span class="feat-num">03</span>
-          <div class="feat-body">
-            <h4>Full Transparency Dashboard</h4>
-            <p>Real-time visibility into leads, campaign ROI, and retail-level performance.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="db-panel">
-      <div class="db-header">
-        <span class="db-h-title">Campaign Performance</span>
-        <span class="db-live"><span class="db-dot"></span>Live</span>
-      </div>
-      <div class="db-rows">
-        <div class="db-row">
-          <span class="db-row-label">WhatsApp Reach Rate</span>
-          <div class="db-row-bar"><div class="db-row-fill dbf-o" style="width:84%"></div></div>
-          <span class="db-row-val">84%</span>
-        </div>
-        <div class="db-row">
-          <span class="db-row-label">Lead Conversion</span>
-          <div class="db-row-bar"><div class="db-row-fill dbf-g" style="width:61%"></div></div>
-          <span class="db-row-val">61%</span>
-        </div>
-        <div class="db-row">
-          <span class="db-row-label">Farmer Engagement</span>
-          <div class="db-row-bar"><div class="db-row-fill dbf-n" style="width:72%"></div></div>
-          <span class="db-row-val">72%</span>
-        </div>
-        <div class="db-row">
-          <span class="db-row-label">Repeat Purchase Lift</span>
-          <div class="db-row-bar"><div class="db-row-fill dbf-o" style="width:88%"></div></div>
-          <span class="db-row-val">3.1×</span>
-        </div>
-        <div class="db-row">
-          <span class="db-row-label">IVR / Missed Call Leads</span>
-          <div class="db-row-bar"><div class="db-row-fill dbf-g" style="width:65%"></div></div>
-          <span class="db-row-val">+60%</span>
-        </div>
-      </div>
-      <div class="db-footer">
-        <div class="db-footer-label">Trusted by</div>
-        <div class="brand-tags">
-          <span class="brand-tag">Coromandel</span>
-          <span class="brand-tag">East-West Seeds</span>
-          <span class="brand-tag">Crystal Crop</span>
-          <span class="brand-tag">Bioseed</span>
-          <span class="brand-tag">SMI Limited</span>
-          <span class="brand-tag">Shivashakti</span>
-        </div>
-      </div>
+<section class="about-sec reveal" id="about">
+  <div class="about-in">
+    <div class="sec-label" style="justify-content:center">About Us</div>
+    <h2>Who is <span>Digicides</span>?</h2>
+    <p>Digicides helps agri brands generate leads, engage farmers, and increase repeat sales through digital marketing, campaigns, and loyalty programs — all tailored for the agri ecosystem.</p>
+    <div class="tags">
+      <span class="tag">
+        <span class="tag-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
+        Lead Generation
+      </span>
+      <span class="tag">
+        <span class="tag-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        Farmer Engagement
+      </span>
+      <span class="tag">
+        <span class="tag-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
+        Repeat Sales
+      </span>
+      <span class="tag">
+        <span class="tag-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+        Digital Campaigns
+      </span>
+      <span class="tag">
+        <span class="tag-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg></span>
+        Loyalty Programs
+      </span>
+      <span class="tag">
+        <span class="tag-ic"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg></span>
+        Agri Ecosystem Experts
+      </span>
     </div>
   </div>
-</div>
-
-<!-- CTA + FORM -->
-<div class="cta-outer" id="book">
-  <div class="cta-box">
-    <div class="cta-left">
-      <div class="cta-eyebrow">Kharif 2025 — Limited Slots</div>
-      <h2>Fix This Before<br/><em>Kharif Starts</em></h2>
-      <p>No obligation. Just a clear, honest strategy session tailored for your agri brand's growth — this season and beyond.</p>
-      <div class="trust-nums">
-        <div>
-          <div class="tn-val">50<em>+</em></div>
-          <div class="tn-label">Brands Helped</div>
-        </div>
-        <div>
-          <div class="tn-val">1.2<em>M</em></div>
-          <div class="tn-label">Farmer Leads</div>
-        </div>
-        <div>
-          <div class="tn-val">100<em>%</em></div>
-          <div class="tn-label">Free Session</div>
-        </div>
-      </div>
-    </div>
-    <div class="form-side">
-      <div class="form-title">Book a free strategy call</div>
-      <div class="form-sub-text">Our team responds within 24 hours.</div>
-      <div class="f-row">
-        <input type="text" placeholder="Your Name"/>
-        <input type="text" placeholder="Company Name"/>
-      </div>
-      <div class="f-field"><input type="email" placeholder="Email Address"/></div>
-      <div class="f-field"><input type="tel" placeholder="Contact Number"/></div>
-      <button class="f-submit">Book My Free Strategy Call →</button>
-      <div class="f-note">No spam. No obligation. 100% confidential.</div>
-    </div>
-  </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
-  <span class="f-logo">Digi<span>cides</span></span>
-  <span class="f-tagline">Discover · Engage · Convert</span>
-  <span class="f-copy">© 2025 Digicides Marketing Services Pvt. Ltd.</span>
+  <div class="f-logo">Digicides</div>
 </footer>
 
 <script>
-const io = new IntersectionObserver(entries=>{
-  entries.forEach((e,i)=>{
+// ── Challenge toggle ──
+function toggleCard(el){
+  el.classList.toggle('selected');
+  updateCounter();
+}
+
+function updateCounter(){
+  const sel = document.querySelectorAll('.ch-card.selected').length;
+  const ctr = document.getElementById('selCounter');
+  ctr.innerHTML = sel === 0
+    ? '<span>0 challenges selected</span>'
+    : `<span class="sel-pill">${sel}</span><span>${sel === 1 ? 'challenge' : 'challenges'} selected — we\'ll address these on your call</span>`;
+  ctr.className = 'sel-counter' + (sel > 0 ? ' active' : '');
+}
+
+// ── Scroll reveal ──
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
     if(e.isIntersecting){
-      e.target.style.animation=`up 0.6s ease ${i*0.06}s forwards`;
-      io.unobserve(e.target);
+      e.target.classList.add('vis');
+      obs.unobserve(e.target);
     }
   });
-},{threshold:0.08});
-document.querySelectorAll('.bc,.feat-item,.db-row,.reveal').forEach(el=>io.observe(el));
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── Nav shadow ──
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').style.boxShadow =
+    scrollY > 40 ? '0 4px 24px rgba(60,20,0,.1)' : 'none';
+});
+
+// ── Orb subtle mouse parallax ──
+document.addEventListener('mousemove', e => {
+  const orb = document.querySelector('.hero-orb');
+  if(!orb) return;
+  const x = (e.clientX / window.innerWidth - .5) * 18;
+  const y = (e.clientY / window.innerHeight - .5) * 12;
+  orb.style.transform = `translateY(calc(-50% + ${y}px)) translateX(${x}px) scale(1)`;
+});
 </script>
 </body>
 </html>
