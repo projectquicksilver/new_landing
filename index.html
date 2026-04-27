@@ -345,8 +345,7 @@ footer{
 @keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.78)}}
 @keyframes orbFloat{0%,100%{transform:translateY(-50%) scale(1)}50%{transform:translateY(-53%) scale(1.04)}}
 @keyframes shimmer{0%{background-position:200% center}100%{background-position:-200% center}}
-@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-@keyframes cardPop{0%{opacity:0;transform:translateY(20px) scale(.96)}100%{opacity:1;transform:none}}
+@keyframes tickerScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}@keyframes cardPop{0%{opacity:0;transform:translateY(20px) scale(.96)}100%{opacity:1;transform:none}}
 @keyframes checkBounce{0%{transform:scale(.3)}60%{transform:scale(1.2)}100%{transform:scale(1)}}
 @keyframes counterSlide{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-2px,2px)}40%{transform:translate(2px,-1px)}60%{transform:translate(-1px,3px)}80%{transform:translate(3px,-2px)}}
@@ -375,9 +374,9 @@ h1 .grad{
 
 /* Strip ticker — infinite scroll */
 .strip-track{
-  display:flex;gap:32px;align-items:center;
-  animation:tickerScroll 18s linear infinite;
-  width:max-content;
+  display:flex;align-items:center;gap:40px;
+  animation:tickerScroll 20s linear infinite;
+  width:max-content;will-change:transform;
 }
 .strip-track:hover{animation-play-state:paused}
 
@@ -420,6 +419,7 @@ h1 .grad{
 
 /* Input focus glow */
 .form-g input:focus{animation:inputGlow .4s ease forwards}
+.err-msg{display:block;font-size:11px;color:#e04040;margin-top:4px;min-height:14px;font-weight:500}
 
 /* About tags stagger float */
 .about-sec.vis .tag:nth-child(1){animation:tagFloat 3s .0s ease-in-out infinite}
@@ -430,7 +430,12 @@ h1 .grad{
 .about-sec.vis .tag:nth-child(6){animation:tagFloat 3s 2.0s ease-in-out infinite}
 
 /* Submit button pulse */
-.form-submit{position:relative;overflow:hidden}
+.form-submit{position:relative;overflow:hidden;cursor:pointer}
+.form-submit:disabled{
+  background:linear-gradient(135deg,#ccc,#aaa);
+  box-shadow:none;cursor:not-allowed;transform:none!important;
+}
+.form-submit:disabled::after{display:none}
 .form-submit::after{
   content:'';position:absolute;inset:0;
   background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.15) 50%,transparent 100%);
@@ -439,16 +444,135 @@ h1 .grad{
 .form-submit:hover::after{transform:translateX(100%)}
 
 /* ── RESPONSIVE ── */
+
+/* Tablet */
 @media(max-width:860px){
-  nav,footer{padding:16px 22px}
-  .hero,.sec,.about-sec{padding:90px 22px 60px}
-  .cta-wrap{grid-template-columns:1fr;gap:36px}
-  .form-row{grid-template-columns:1fr}
-  .strip{padding:18px 22px;gap:18px}
-  .challenges-grid{grid-template-columns:repeat(2,1fr)}
+  nav{ padding:14px 20px }
+  nav .nav-btn{ padding:9px 18px; font-size:13px }
+  footer{ padding:24px 20px }
+
+  .hero{ padding:80px 24px 48px }
+  .sec{ padding:72px 24px }
+  .about-sec{ padding:72px 24px }
+  .hero-badge{ font-size:10px; padding:6px 14px; margin-bottom:20px }
+  h1{ font-size:clamp(36px,7vw,54px); line-height:1.1; margin-bottom:12px }
+  .hero-sub{ font-size:clamp(17px,4vw,22px); margin-bottom:14px }
+  .hero-desc{ font-size:15px; margin:0 auto 34px; max-width:420px }
+  .hero-cta{ font-size:15px; padding:14px 28px }
+
+  .strip{ padding:16px 0 }
+  .strip-item{ font-size:11px; gap:7px }
+
+  .sec{ padding:72px 24px }
+  .sec-label{ font-size:10px; letter-spacing:2px }
+
+  .challenges-sec h2{ font-size:clamp(26px,6vw,40px); margin-bottom:10px }
+  .challenge-hint{ font-size:12px; margin-bottom:32px }
+  .challenges-grid{ grid-template-columns:repeat(2,1fr); gap:10px }
+  .ch-card{ padding:18px 16px; min-height:110px }
+  .ch-text{ font-size:13px }
+
+  .cta-wrap{ grid-template-columns:1fr; gap:32px }
+  .cta-left h2{ font-size:clamp(26px,6vw,38px) }
+  .cta-left p{ font-size:15px }
+  .form-card{ padding:28px 24px }
+  .form-row{ grid-template-columns:1fr }
+  .form-head{ font-size:18px }
+  .form-g input{ font-size:14px; padding:12px 14px }
+  .form-submit{ font-size:15px; padding:14px }
+
+  .about-sec{ padding:72px 24px }
+  .about-in h2{ font-size:clamp(26px,6vw,38px) }
+  .about-in p{ font-size:16px }
+  .tag{ font-size:12px; padding:9px 16px }
 }
+
+/* Mobile */
 @media(max-width:520px){
-  .challenges-grid{grid-template-columns:1fr}
+  nav{ padding:12px 16px }
+  nav .nav-btn{ padding:8px 14px; font-size:12px; gap:6px }
+  nav .nav-btn svg{ display:none }
+
+  .hero{ padding:72px 18px 40px }
+  .hero-badge{ font-size:9.5px; padding:5px 12px; letter-spacing:1.2px }
+  h1{ font-size:clamp(32px,9vw,44px); line-height:1.08 }
+  .hero-sub{ font-size:clamp(16px,4.5vw,20px) }
+  .hero-desc{ font-size:14.5px; line-height:1.65 }
+  .hero-cta{ font-size:14px; padding:13px 24px; border-radius:100px }
+
+  .challenges-grid{ grid-template-columns:1fr; gap:10px }
+  .ch-card{ min-height:auto; padding:16px }
+  .ch-card[style*="grid-column"]{ grid-column:1 }
+  .ch-text{ font-size:14px }
+  .challenges-sec h2{ font-size:clamp(24px,8vw,34px) }
+
+  .cta-left h2{ font-size:clamp(24px,7.5vw,32px) }
+  .form-card{ padding:22px 18px; border-radius:18px }
+  .form-head{ font-size:16px; margin-bottom:20px }
+  .form-head-ic{ width:34px; height:34px }
+  .form-g{ margin-bottom:14px }
+  .form-g label{ font-size:10.5px }
+  .form-g input{ font-size:15px; padding:13px 14px; border-radius:10px }
+  .err-msg{ font-size:10.5px }
+  .form-submit{ font-size:14.5px; padding:14px; border-radius:10px }
+
+  .about-in h2{ font-size:clamp(24px,7.5vw,32px) }
+  .about-in p{ font-size:15px; line-height:1.75 }
+  .tags{ gap:8px }
+  .tag{ font-size:12px; padding:8px 14px }
+  .tag-ic{ width:18px; height:18px }
+
+  footer{ padding:20px 18px }
+  footer img{ height:30px }
+
+  /* Strip items a bit smaller on tiny screens */
+  .strip-item{ font-size:10.5px }
+  .strip-ic{ padding:4px }
+
+  /* Section label */
+  .sec-label{ font-size:9.5px; letter-spacing:1.8px }
+
+  /* Selection counter */
+  .sel-counter{ font-size:12px }
+  .sel-pill{ font-size:11px; padding:2px 9px }
+}
+/* ── THANK YOU CARD ── */
+.ty-card{
+  display:none;
+  flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;padding:48px 40px;
+  background:var(--wh);border-radius:24px;
+  box-shadow:0 18px 56px rgba(60,20,0,.1);
+  border:1px solid rgba(232,87,10,.12);
+  position:relative;z-index:2;
+  animation:fadeUp .6s ease both;
+}
+.ty-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--oc),var(--am));border-radius:24px 24px 0 0;
+}
+.ty-icon-wrap{
+  width:72px;height:72px;
+  background:linear-gradient(135deg,var(--oc),var(--am));
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  margin-bottom:24px;
+  box-shadow:0 8px 28px rgba(232,87,10,.35);
+  animation:checkBounce .5s .2s ease both;
+}
+.ty-title{
+  font-family:'Playfair Display',serif;
+  font-size:clamp(22px,3vw,28px);font-weight:900;
+  color:var(--soil);margin-bottom:12px;line-height:1.2;
+}
+.ty-title span{color:var(--oc)}
+.ty-desc{
+  font-size:15px;color:var(--ts);line-height:1.7;
+  max-width:320px;margin:0 auto;
+}
+.ty-divider{
+  width:48px;height:3px;
+  background:linear-gradient(90deg,var(--oc),var(--am));
+  border-radius:100px;margin:20px auto;
 }
 </style>
 </head>
@@ -456,7 +580,9 @@ h1 .grad{
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="logo">Digi<span>cides</span></div>
+  <a href="https://digicides.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;text-decoration:none">
+    <img src="https://i.ibb.co/HfSb0vng/image-removebg-preview-6.png" alt="Digicides" style="height:40px;width:auto;display:block">
+  </a>
   <button class="nav-btn" onclick="document.getElementById('cta').scrollIntoView({behavior:'smooth'})">
     <!-- phone-call -->
     <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.68 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0 1 22 16.92z"/><path d="M14.05 2a9 9 0 0 1 7.95 7.94"/><path d="M14.05 6A5 5 0 0 1 18 10"/></svg>
@@ -629,16 +755,18 @@ h1 .grad{
         <div class="form-g">
           <label>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            Name
+            Name <span style="color:var(--oc)">*</span>
           </label>
-          <input type="text" placeholder="Your full name">
+          <input id="f-name" type="text" placeholder="Your full name" oninput="validateForm()">
+          <span class="err-msg" id="err-name"></span>
         </div>
         <div class="form-g">
           <label>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            Company Name
+            Company Name <span style="color:var(--oc)">*</span>
           </label>
-          <input type="text" placeholder="Your agri brand">
+          <input id="f-company" type="text" placeholder="Your agri brand" oninput="validateForm()">
+          <span class="err-msg" id="err-company"></span>
         </div>
       </div>
 
@@ -647,23 +775,36 @@ h1 .grad{
         <div class="form-g">
           <label>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            Email
+            Email <span style="color:var(--oc)">*</span>
           </label>
-          <input type="email" placeholder="you@company.com">
+          <input id="f-email" type="email" placeholder="you@company.com" oninput="validateForm()">
+          <span class="err-msg" id="err-email"></span>
         </div>
         <div class="form-g">
           <label>
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-width="3"/></svg>
-            Contact Number
+            Contact Number <span style="color:var(--oc)">*</span>
           </label>
-          <input type="tel" placeholder="+91 00000 00000">
+          <input id="f-phone" type="tel" placeholder="10-digit mobile number" maxlength="10" oninput="this.value=this.value.replace(/\D/g,'');validateForm()">
+          <span class="err-msg" id="err-phone"></span>
         </div>
       </div>
 
-      <button class="form-submit">
+      <button class="form-submit" id="submitBtn" disabled onclick="submitForm()">
         Book My Free Strategy Call
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </button>
+      <div id="form-status" style="margin-top:12px;font-size:13px;text-align:center;display:none"></div>
+    </div>
+
+    <!-- THANK YOU CARD (replaces form on success) -->
+    <div class="ty-card" id="ty-card">
+      <div class="ty-icon-wrap">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="ty-title">Thank You<span>!</span></div>
+      <div class="ty-divider"></div>
+      <p class="ty-desc">We've received your details. Our team will reach out to you shortly with a clear strategy for your brand.</p>
     </div>
   </div>
 </section>
@@ -704,11 +845,22 @@ h1 .grad{
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <div class="f-logo">Digicides</div>
-</footer>
+<footer style="padding:20px 48px;background:var(--soil)"></footer>
 
 <script>
+const WEBHOOK = 'https://aiautomation.digicides.com/webhook-test/retargeting-campaign';
+
+// ── Challenge labels map ──
+const CHALLENGE_LABELS = [
+  'Low product sales or repeat sales issues',
+  'Not reaching the right farmer audience',
+  'Confused about digital marketing strategy',
+  'Running campaigns but not seeing results / low ROI',
+  'Struggling to engage farmers consistently',
+  'No proper system for farmer lead generation',
+  'Seasonal sales dependency with no long-term plan'
+];
+
 // ── Challenge toggle ──
 function toggleCard(el){
   el.classList.toggle('selected');
@@ -724,13 +876,90 @@ function updateCounter(){
   ctr.className = 'sel-counter' + (sel > 0 ? ' active' : '');
 }
 
+// ── Form validation ──
+function isValidEmail(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+function isValidPhone(v){ return /^\d{10}$/.test(v.trim()); }
+
+function setErr(id, msg){
+  const el = document.getElementById('err-'+id);
+  if(el) el.textContent = msg;
+}
+
+function validateForm(){
+  const name    = document.getElementById('f-name').value.trim();
+  const company = document.getElementById('f-company').value.trim();
+  const email   = document.getElementById('f-email').value.trim();
+  const phone   = document.getElementById('f-phone').value.trim();
+  const btn     = document.getElementById('submitBtn');
+
+  let ok = true;
+
+  if(!name){        setErr('name','Name is required'); ok=false; }
+  else              setErr('name','');
+
+  if(!company){     setErr('company','Company name is required'); ok=false; }
+  else              setErr('company','');
+
+  if(!email){       setErr('email','Email is required'); ok=false; }
+  else if(!isValidEmail(email)){ setErr('email','Enter a valid email address'); ok=false; }
+  else              setErr('email','');
+
+  if(!phone){       setErr('phone','Phone number is required'); ok=false; }
+  else if(!isValidPhone(phone)){ setErr('phone','Enter a valid 10-digit number'); ok=false; }
+  else              setErr('phone','');
+
+  btn.disabled = !ok;
+}
+
+// ── Submit → Webhook ──
+async function submitForm(){
+  const btn  = document.getElementById('submitBtn');
+
+  // Gather selected challenges
+  const selectedChallenges = [...document.querySelectorAll('.ch-card.selected')]
+    .map(c => CHALLENGE_LABELS[parseInt(c.dataset.id)]);
+
+  const payload = {
+    name:        document.getElementById('f-name').value.trim(),
+    company:     document.getElementById('f-company').value.trim(),
+    email:       document.getElementById('f-email').value.trim(),
+    phone:       document.getElementById('f-phone').value.trim(),
+    challenges:  selectedChallenges,
+    submitted_at: new Date().toISOString(),
+    source: 'Kharif 2026 Remarketing Landing Page'
+  };
+
+  btn.disabled = true;
+  btn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="animation:spin .8s linear infinite"><path d="M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z" opacity=".3"/><path d="M21 12a9 9 0 0 0-9-9"/></svg> Submitting…`;
+
+  try {
+    await fetch(WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      mode: 'no-cors'
+    });
+    // Hide form card, show thank you card
+    document.querySelector('.form-card').style.display = 'none';
+    const ty = document.getElementById('ty-card');
+    ty.style.display = 'flex';
+    // Redirect to digicides.com after 10 seconds silently
+    setTimeout(() => { window.location.href = 'https://digicides.com'; }, 10000);
+  } catch(err) {
+    btn.disabled = false;
+    btn.style.background = '';
+    btn.innerHTML = `Book My Free Strategy Call <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>`;
+    const stat = document.getElementById('form-status');
+    stat.style.display = 'block';
+    stat.style.color = '#e04040';
+    stat.textContent = 'Something went wrong. Please try again.';
+  }
+}
+
 // ── Scroll reveal ──
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => {
-    if(e.isIntersecting){
-      e.target.classList.add('vis');
-      obs.unobserve(e.target);
-    }
+    if(e.isIntersecting){ e.target.classList.add('vis'); obs.unobserve(e.target); }
   });
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
@@ -741,14 +970,32 @@ window.addEventListener('scroll', () => {
     scrollY > 40 ? '0 4px 24px rgba(60,20,0,.1)' : 'none';
 });
 
-// ── Orb subtle mouse parallax ──
+// ── Orb mouse parallax ──
 document.addEventListener('mousemove', e => {
   const orb = document.querySelector('.hero-orb');
   if(!orb) return;
   const x = (e.clientX / window.innerWidth - .5) * 18;
   const y = (e.clientY / window.innerHeight - .5) * 12;
-  orb.style.transform = `translateY(calc(-50% + ${y}px)) translateX(${x}px) scale(1)`;
+  orb.style.transform = `translateY(calc(-50% + ${y}px)) translateX(${x}px)`;
 });
+
+// ── Ticker: JS clone for true seamless loop ──
+(function(){
+  const track = document.querySelector('.strip-track');
+  if(!track) return;
+  // Remove CSS duplicate children and let JS handle it
+  const origItems = [...track.children];
+  // Already has duplicates from HTML for CSS fallback; rebuild cleanly
+  track.innerHTML = '';
+  origItems.slice(0, Math.ceil(origItems.length/2)).forEach(el => track.appendChild(el));
+  // Clone set
+  [...track.children].forEach(el => track.appendChild(el.cloneNode(true)));
+})();
+
+// Spin keyframe for loader
+const ss = document.createElement('style');
+ss.textContent = '@keyframes spin{to{transform:rotate(360deg)}}';
+document.head.appendChild(ss);
 </script>
 </body>
 </html>
